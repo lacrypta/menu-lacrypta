@@ -1,0 +1,11 @@
+{
+  "name": "menu-lacrypta",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Menú del evento de La Crypta (Barra, Comida, Merch) — sitio estático.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/generate-menu.mjs",
+    "dev": "node scripts/generate-menu.mjs && npx --yes serve public"
+  }
+}
