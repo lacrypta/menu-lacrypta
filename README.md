@@ -14,6 +14,48 @@ scripts/     generate-menu.mjs   (genera public/index.html desde data/)
 public/      index.html (generado) · icon.png
 ```
 
+## Datos del menú
+
+El menú se genera **a partir de estos archivos JSON**, que lee
+`scripts/generate-menu.mjs`:
+
+| Archivo | Contenido |
+|---|---|
+| `data/barra.json` | Items del menú **Barra** (con/sin alcohol) |
+| `data/comida.json` | Items del menú **Comida** |
+| `data/merch.json` | Items del menú **Merch** |
+| `data/categories.json` | Nombres de las categorías (referenciadas por `category_id`) |
+
+Cada item tiene esta forma:
+
+```json
+{
+  "id": 6,
+  "category_id": 9,
+  "name": "Fuck KYC (Cuba Libre)",
+  "description": "",
+  "price": { "value": 7300, "currency": "ARS" }
+}
+```
+
+`currency` admite `ARS`, `USD` o `SAT`. El texto entre paréntesis del `name` se
+muestra como subtítulo (ej.: **Fuck KYC** / _Cuba Libre_).
+
+### Origen (fuente de verdad)
+
+Los archivos de `data/` son una **copia** del menú de la app LaPOS, repo
+[`lawalletio/mobile-pos`](https://github.com/lawalletio/mobile-pos):
+
+| Acá (`menu-lacrypta`) | Origen (`mobile-pos`) |
+|---|---|
+| `data/barra.json` | `src/constants/menus/barra.json` |
+| `data/comida.json` | `src/constants/menus/comida.json` |
+| `data/merch.json` | `src/constants/menus/merch.json` |
+| `data/categories.json` | `src/constants/categories.json` |
+
+Si el menú cambia en `mobile-pos`, volvé a copiar esos archivos a `data/` y
+regenerá con `npm run build`.
+
 ## Actualizar el menú
 
 1. Editá los precios/items en `data/*.json`.
